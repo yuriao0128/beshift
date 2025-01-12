@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PositionsTableSeeder::class,
         ]);
-                
+
+    // ほかのシーダーがある場合に追加で呼び出す
+    $this->call([
+        ArticlesTableSeeder::class,
+    ]);
+       
     }
 }

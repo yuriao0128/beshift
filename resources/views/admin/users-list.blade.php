@@ -23,7 +23,7 @@
             >
             <button 
                 type="submit" 
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                class="px-6 p-3 text-center text-m text-white font-semibold leading-none bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg shadow-md opacity-90 hover:opacity-100 hover:shadow-lg transition">
                 検索
             </button>
         </div>

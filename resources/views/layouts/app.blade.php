@@ -9,7 +9,7 @@
           href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/admin/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="/css/tailwind/tailwind.min.css">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,10 +20,10 @@
 
     <!-- サイドバー -->
     <div class="hidden lg:block navbar-menu relative z-50">
-        <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-64 pt-6 pb-8 bg-gray-800 overflow-y-auto">
-            <h1 class="px-6 pb-6 mb-6 text-white text-xl font-semibold border-b border-gray-700">
-                ユーザーページ
-            </h1>
+        <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-64 pt-6 pb-8 bg-gray-800 overflow-y-auto no-underline hover:no-underline">
+        <a href="{{ route('users.mypage') }}" class="block px-6 pb-6 mb-6 text-white text-xl font-semibold border-b border-gray-700 no-underline hover:no-underline">
+    ユーザーページ
+</a>
             <div class="px-4 pb-6">
                 <h3 class="mb-2 text-xs uppercase text-gray-500 font-medium">メニュー</h3>
                 <ul class="mb-8 text-sm font-medium">

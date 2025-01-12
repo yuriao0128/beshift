@@ -1,0 +1,387 @@
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: IBM Plex Serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+/* ヘッダー */
+.header {
+    width: 100%;
+    background-color:white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 54px;
+    height: 54px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.register-button {
+    background-color: #ebc2d4;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Heroセクション */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #fff 50%,  transparent 50%), 
+    url('/images/index/image2.jpg');
+    border-bottom: 1px solid #ddd;
+}
+
+.hero-left {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.hero-features {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+
+.hero-features li {
+    font-size:20px;
+    gap: 15px;
+    margin-bottom: 18px;
+    display: flex; /* アイコンとテキストを横並びに */
+    flex-direction: column; /* アイコンとテキストを縦方向に並べる */
+    align-items: center; /* アイコンとテキストを中央揃え */
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-card {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;     /* 縦に並べる */
+    justify-content: center;    /* 垂直方向の中央寄せ */
+    align-items: center;        /* 水平方向の中央寄せ */
+}
+
+.cta-button {
+    background-color: #ebc2d4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    
+    cursor: pointer;
+    margin-bottom: 15px;
+    width: 50%;
+}
+
+.cta-button.secondary {
+    background-color: #cbe7f0;
+    color: #fff;
+}
+
+.cta-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+/* ABOUTセクション */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-heading {
+    text-align: center;
+    font-size: 24px;
+}
+
+.about-desc {
+    text-align: left; /* テキストを中央寄せ */
+    margin: 20px auto; /* 上下に余白を追加し、中央配置 */
+    line-height: 1.8; /* 行間を調整 */
+    font-size: 18px; /* フォントサイズを調整 */
+    max-width: 80%; /* コンテンツ幅を制限して中央に寄せる */
+}
+
+.how-title {
+    font-size: 36px;
+    color: #cbe7f0;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.how-subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+
+
+.section-title {
+    margin-top:50px;
+    font-size: 36px;
+    text-align: center;
+    color: #d0a2b7;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+/* FEATURESセクション */
+.features-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+}
+
+.feature {
+    position: relative;
+    width: 30%;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: hidden; /* 背景画像が外にはみ出ないように */
+}
+
+.feature-background {
+    position: absolute;
+    top:  -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 180%; /* 背景円のサイズ調整 */
+}
+
+.background-circle {
+    width: 100%;
+    height: auto;
+    opacity: 0.3; /* 背景を薄く見せる */
+}
+
+.feature-title {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    z-index: 1;
+}
+
+.feature-number {
+    color: #ebc2d4;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.feature-description {
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+    z-index: 1;
+}
+
+.feature-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* HOWセクション */
+.how-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+}
+
+.how-title {
+    font-size: 36px;
+    color: #cbe7f0;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.how-subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.how-steps {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.how-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.how-label {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.life-event {
+    background-color: #cbe7f0;
+    height: 400px;
+}
+
+.after-event {
+    background-color: #ebc2d4;
+    height: 150px;
+}
+
+.how-content {
+    flex: 1;
+    padding-left: 50px;
+    text-align: center;
+}
+
+.step {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.step-number {
+    font-size: 30px;
+    font-weight: bold;
+    color: #cbe7f0;
+    margin-right: 30px;
+}
+
+.step-number2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ebc2d4;
+    margin-right: 30px;
+}
+
+.step-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    width: 200px;
+    text-align: left;
+}
+
+.step-description {
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+    margin-left: 50px;
+}
+
+.step-left {
+    width: 300px;
+    text-align: left;
+    
+}
+
+
+/* フッター */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}

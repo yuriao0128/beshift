@@ -6,10 +6,10 @@
                 <!-- タブメニュー -->
                 <div class="py-4 px-6">
             <div class="flex space-x-4">
-                <a href="{{ route('admin.users.create') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.users.create') ? 'bg-indigo-500 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
+                <a href="{{ route('admin.users.create') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.users.create') ? 'bg-gradient-to-r from-pink-200 to-blue-200 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
                     管理者登録
                 </a>
-                <a href="{{ route('admin.admin.list') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.list') ? 'bg-indigo-500 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
+                <a href="{{ route('admin.admin.list') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.list') ? 'bg-gradient-to-r from-pink-200 to-blue-200 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
                     登録済み管理者
                 </a>
             </div>

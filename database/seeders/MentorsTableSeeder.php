@@ -20,7 +20,7 @@ class MentorsTableSeeder extends Seeder
         Mentor::create([
             'name' => '山田 花子',
             'expertise' => 'IT業界キャリア',
-            'bio' => 'IT業界に特化したキャリア支援を行っています。',
+            'bio' => '3歳と4歳の娘を育てながらフリーランスで働いています',
             'image' => 'mentor_images/default2.jpg',
         ]);
 

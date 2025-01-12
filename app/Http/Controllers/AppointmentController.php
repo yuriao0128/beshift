@@ -128,4 +128,14 @@ class AppointmentController extends Controller
             return redirect()->route('admin.appointments.index')->with('success', '面談内容を更新しました。');
         }
 
+        public function cancel($id)
+{
+    $appointment = Appointment::findOrFail($id);
+    $appointment->delete();
+
+    
+
+    return redirect()->route('appointment.calendar')->with('success', '面談をキャンセルしました。');
+}
+
 }

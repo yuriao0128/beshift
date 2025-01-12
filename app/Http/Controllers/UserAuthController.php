@@ -61,3 +61,4 @@ class UserAuthController extends Controller
         return redirect('/login')->with('success', 'ログアウトしました');
     }
 }
+

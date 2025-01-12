@@ -6,10 +6,10 @@
         <div class="px-4 mx-auto">
             <div class="py-4">
                 <div class="flex space-x-4">
-                    <a href="{{ route('admin.users.create') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.users.create') ? 'bg-indigo-500 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
+                    <a href="{{ route('admin.users.create') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.users.create') ? 'bg-blue-200 font-bold text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
                         管理者登録
                     </a>
-                    <a href="{{ route('admin.admin.list') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.list') ? 'bg-indigo-500 text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
+                    <a href="{{ route('admin.admin.list') }}" class="py-2 px-4 text-sm font-medium {{ request()->routeIs('admin.list') ? 'bg-blue-200 font-bold text-white' : 'bg-gray-300 text-gray-700' }} rounded-md">
                         登録済み管理者
                     </a>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="flex px-6 pb-4 border-b">
                     <h3 class="text-xl font-bold">管理者登録</h3>
                     <div class="ml-auto">
-                        <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">登録</button>
+                        <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-gradient-to-r from-pink-200 to-blue-200 rounded-md">登録</button>
                     </div>
                 </div>
 

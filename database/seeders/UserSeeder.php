@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $sampleImagePath = 'user_images/sample.jpg';
+        $sampleImagePath = 'images/index/sample.png';
 
         // ダミーユーザーを作成
         User::create([

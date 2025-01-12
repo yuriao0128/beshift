@@ -100,7 +100,7 @@
             <div class="mt-6 flex justify-end">
                 <button 
                     type="submit" 
-                    class="px-6 py-2 bg-indigo-500 text-white font-medium rounded-md shadow hover:bg-indigo-600 focus:outline-none">
+                    class="px-6 p-3 text-center text-m text-white font-semibold leading-none bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg shadow-md opacity-90 hover:opacity-100 hover:shadow-lg transition">
                     保存
                 </button>
             </div>

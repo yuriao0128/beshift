@@ -9,7 +9,7 @@
           href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/admin/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="/css/tailwind/tailwind.min.css">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,7 +23,7 @@
             <div class="flex justify-between items-center h-16">
                 <span class="text-lg font-bold text-indigo-600"></span>
                 <div class="flex items-center">
-                    <a href="{{ route('users.login') }}" class="text-blue-500 text-sm hover:underline">
+                    <a href="{{ route('users.login') }}" class="text-blue-300 text-sm hover:underline">
                         ログインへ戻る
                     </a>
                 </div>
@@ -82,9 +82,8 @@
                         <textarea id="introduction" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="introduction" rows="3">{{ old('introduction') }}</textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-3 text-white bg-indigo-500 hover:bg-indigo-600 rounded">登録</button>
-                </form>
-            </div>
+                    <button type="submit" class="w-full py-3 text-white font-semibold text-m bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg shadow-md opacity-90 hover:opacity-100 hover:shadow-lg transition">登録</button>
+                </div>
         </div>
     </main>
 </div>

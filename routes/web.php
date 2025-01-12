@@ -13,6 +13,7 @@ use App\Http\Controllers\AvailableScheduleController;
 use App\Http\Controllers\MentorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Article;
 
 Route::view('/', 'index');
 
@@ -57,9 +58,12 @@ Route::middleware('guest')->group(function () {
 });
 
     Route::middleware('auth')->group(function () {
-        Route::get('/mypage', [UserController::class, 'mypage'])->name('users.mypage');
-        Route::post('/logout', [UserAuthController::class, 'logout'])->name('users.logout');
-
+        Route::get('/mypage', function () {
+            $articles = Article::orderBy('id', 'desc')->get();
+            return view('users.mypage', compact('articles'));
+        })->name('users.mypage');
+        
+        Route::post('/users/logout', [UserAuthController::class, 'logout'])->name('users.logout');
 
     //プロフィール編集ページ
     Route::get('/users/profile/edit', [ProfileController::class, 'edit'])->name('users.profile.edit');
@@ -87,3 +91,8 @@ Route::post('/admin/mentors', [MentorController::class, 'store'])->name('admin.m
 
 });
 
+
+//ランディングページ
+Route::get('/', function () {
+    return view('landing');
+});
