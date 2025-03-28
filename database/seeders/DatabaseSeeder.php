@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
     $this->call([
         ArticlesTableSeeder::class,
     ]);
+
+    $this->call(AvailableScheduleSeeder::class);
        
     }
 }

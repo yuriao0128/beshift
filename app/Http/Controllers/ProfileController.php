@@ -16,37 +16,62 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        // 現在のユーザー
+        // 既存のプロフィール表示画面用の処理（閲覧用）
         $user = Auth::user();
-
-        // プロファイル情報を取得または作成
         $profile = Profile::firstOrCreate(['user_id' => $user->id]);
-
-        // positions テーブルからすべての職種を取得
         $positions = Position::all();
-
+    
         return view('users.profile.edit', compact('user', 'profile', 'positions'));
     }
-
+    
+    public function reedit()
+    {
+        // 編集ボタンを押したときに遷移する編集用のページ
+        $user = Auth::user();
+        $profile = Profile::firstOrCreate(['user_id' => $user->id]);
+        $positions = Position::all();
+    
+        return view('users.profile.reedit', compact('user', 'profile', 'positions'));
+    }
     /**
      * プロフィールの更新
      */
     public function update(Request $request)
     {
         // バリデーション
-            $request->validate([
-                'kana' => 'required|string|max:255',
-                'birth_date' => 'nullable|date_format:Y-m-d', // YYYY-MM-DD形式を指定
-                'phone_number' => 'nullable|string|max:15',
-                'education' => 'nullable|string|max:255',
-                'school_name' => 'nullable|string|max:255',
-                'graduation_date' => 'nullable|date_format:Y-m-d',
-                'qualifications' => 'nullable|string|max:1000',
-            ]);
+        $request->validate([
+            'kana'             => 'required|string|max:255',
+            'birth_date'       => 'nullable|date_format:Y-m-d',
+            'phone_number'     => 'nullable|string|max:15',
+            'education'        => 'nullable|string|max:255',
+            'school_name'      => 'nullable|string|max:255',
+            'graduation_date'  => 'nullable|date_format:Y-m-d',
+            'qualifications'   => 'nullable|string|max:1000',
+            'introduction'     => 'nullable|string',
+            // 画像アップロードのバリデーション（任意）
+            'image'            => 'nullable|image|max:2048',
+        ]);
         
 
         // 現在のユーザー
         $user = Auth::user();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+    
+            // 既存の画像がある場合は削除（任意）
+            if ($user->image && \Storage::disk('public')->exists($user->image)) {
+                \Storage::disk('public')->delete($user->image);
+            }
+    
+            // 画像を保存し、パスを取得（'user_images' フォルダに保存）
+            $path = $file->store('user_images', 'public');
+    
+            // User モデルの image フィールドを更新
+            $user->image = $path;
+            $user->save();
+        }
+
 
         // プロファイル情報を取得または作成
         $profile = Profile::firstOrCreate(['user_id' => $user->id]);

@@ -14,9 +14,7 @@ class CareerRecord extends Model
         'company_name',
         'position',
         'job_type', // 職種
-        'employment_type', // 雇用形態
-        'start_date',
-        'end_date',
-        'description',
+        'years',   // 経験年数
+        'skills',  // スキル・経験
     ];
 }

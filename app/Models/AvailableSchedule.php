@@ -11,5 +11,6 @@ class AvailableSchedule extends Model
     protected $fillable = [
         'available_date',
         'available_time',
+        'mentor_id',
     ];
 }

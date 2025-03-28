@@ -14,5 +14,8 @@ class DesiredCondition extends Model
         'desired_position',
         'desired_salary',
         'desired_location',
+        'desired_work_time',
+        'desired_work_detail',
+        'receive_scout',
     ];
 }

@@ -2,6 +2,23 @@
 
 @section('content')
 <div class="container mx-auto mt-8 px-4">
+@if (!empty(Auth::user()->career_summary))
+    <div class="bg-white shadow-lg rounded-lg p-8 mb-10 border border-gray-200">
+        <div class="flex items-start justify-between">
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-2">
+                    キャリア移行プラン
+                </h2>
+                <p class="text-gray-600">
+                    {{ Auth::user()->career_summary }}
+                </p>
+            </div>
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                順調に進行中
+            </span>
+        </div>
+    </div>
+@endif
 
     {{-- 成功メッセージ --}}
     @if(session('success'))
@@ -67,66 +84,65 @@
 </div>
 
 
-    {{-- 記事一覧 --}}
-    <h2 class="text-xl font-semibold mb-4 mt-10 text-center">Career Articles</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @foreach($articles as $article)
-            <div class="flex flex-col bg-white shadow-md rounded-lg overflow-hidden">
-                
-                {{-- 新着バッジ（例: 新着ならラベルを表示） --}}
-                @if($article->is_new)
-                    <span class="bg-red-500 text-white text-xs px-2 py-1 absolute mt-2 ml-2 rounded">
-                        新着
+{{-- 記事一覧 --}}
+<h2 class="text-xl font-semibold mb-4 mt-10 text-center">Career Articles</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    @foreach($articles as $article)
+        <div class="flex flex-col bg-white shadow-md rounded-lg overflow-hidden">
+            
+            {{-- 新着バッジ --}}
+            @if($article->is_new)
+                <span class="bg-red-500 text-white text-xs px-2 py-1 absolute mt-2 ml-2 rounded">
+                    新着
+                </span>
+            @endif
+
+            {{-- 記事画像 --}}
+            @if($article->image_path)
+                <img src="{{ asset($article->image_path) }}"
+                     alt="記事イメージ" 
+                     class="w-full h-48 object-cover object-center">
+            @else
+                <img src="{{ asset('images/default-article.jpg') }}"
+                     alt="記事イメージ" 
+                     class="w-full h-48 object-cover object-center">
+            @endif
+
+            <div class="p-4 flex flex-col flex-grow">
+                {{-- 公開日 --}}
+                @if($article->published_at)
+                    <small class="text-gray-500 text-sm">
+                        {{ $article->published_at->format('Y/m/d') }}
+                    </small>
+                @endif
+
+                {{-- 記事タイトル --}}
+                <h5 class="text-lg font-semibold mt-2">
+                    {{ $article->title }}
+                </h5>
+
+                {{-- 本文抜粋 --}}
+                <p class="text-gray-700 mt-2 flex-grow">
+                    {{ Str::limit($article->body, 50, '...') }}
+                </p>
+
+                {{-- カテゴリ --}}
+                @if($article->category)
+                    <span class="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 mt-2 rounded">
+                        {{ $article->category }}
                     </span>
                 @endif
 
-                {{-- 記事画像 --}}
-                @if($article->image_path)
-                    <img src="{{ asset($article->image_path) }}"
-                         alt="記事イメージ" 
-                         class="w-full h-48 object-cover object-center">
-                @else
-                    <img src="{{ asset('images/default-article.jpg') }}"
-                         alt="記事イメージ" 
-                         class="w-full h-48 object-cover object-center">
-                @endif
-
-                <div class="p-4 flex flex-col flex-grow">
-                    {{-- 公開日 --}}
-                    @if($article->published_at)
-                        <small class="text-gray-500 text-sm">
-                            {{-- published_at が日付キャストされている前提 --}}
-                            {{ $article->published_at->format('Y/m/d') }}
-                        </small>
-                    @endif
-
-                    {{-- 記事タイトル --}}
-                    <h5 class="text-lg font-semibold mt-2">
-                        {{ $article->title }}
-                    </h5>
-
-                    {{-- 本文抜粋 --}}
-                    <p class="text-gray-700 mt-2 flex-grow">
-                        {{ Str::limit($article->body, 50, '...') }}
-                    </p>
-
-                    {{-- カテゴリなどがあればバッジ表示 --}}
-                    @if($article->category)
-                        <span class="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 mt-2 rounded">
-                            {{ $article->category }}
-                        </span>
-                    @endif
-
-                    {{-- リンクボタン --}}
-                    <div class="mt-4 text-right">
-                        <a href="#" class="text-blue-600 hover:underline font-semibold">
-                            記事を読む
-                        </a>
-                    </div>
+                {{-- 記事を読むリンク --}}
+                <div class="mt-4 text-right">
+                    <a href="{{ route('articles.show', $article->id) }}" class="text-blue-600 hover:underline font-semibold">
+                        記事を読む
+                    </a>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
 
     {{-- ボタン類 --}}
     <div class="mt-10">

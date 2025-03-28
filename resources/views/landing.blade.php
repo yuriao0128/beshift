@@ -58,7 +58,9 @@
 
         <section id="features" class="features-section">
     <div class="features-container">
+
         <div class="feature">
+        <div class="h-1 w-full bg-gradient-to-r from-[#66CFD5] to-[#A4E0E4]"></div>
             <div class="feature-background">
                 <img src="/images/index/icon.png" alt="背景" class="background-circle">
             </div>
@@ -67,6 +69,7 @@
             <img src="/images/index/top-image2.jpg" alt="柔軟な働き方" class="feature-image">
         </div>
         <div class="feature">
+        <div class="h-1 w-full bg-gradient-to-r from-[#66CFD5] to-[#A4E0E4]"></div>
             <div class="feature-background">
                 <img src="/images/index/icon.png" alt="背景" class="background-circle">
             </div>
@@ -75,6 +78,7 @@
             <img src="/images/index/top-image1.jpg" alt="コア人材" class="feature-image">
         </div>
         <div class="feature">
+        <div class="h-1 w-full bg-gradient-to-r from-[#66CFD5] to-[#A4E0E4]"></div>
             <div class="feature-background">
                 <img src="/images/index/icon.png" alt="背景" class="background-circle">
             </div>

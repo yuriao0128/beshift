@@ -9,6 +9,15 @@ use App\Models\Mentor;
 
 class AppointmentController extends Controller
 {
+
+        public function create()
+        {
+            // すべての予約可能スケジュールを取得（必要なら mentor_id でグループ化も可能）
+            $schedules = \App\Models\AvailableSchedule::all();
+            $mentors = \App\Models\Mentor::all();
+            
+            return view('appointment.calendar', compact('schedules', 'mentors'));
+        }
         // 申し込み開始画面
         public function start()
         {
@@ -28,11 +37,13 @@ class AppointmentController extends Controller
         public function saveCalendar(Request $request)
         {
             $request->validate([
+                'mentor_id'    => 'required|integer',
                 'desired_date' => 'required|date|after_or_equal:today',
                 'desired_time' => 'required',
             ]);
     
             session([
+                'appointment.mentor_id'    => $request->mentor_id,
                 'appointment.desired_date' => $request->desired_date,
                 'appointment.desired_time' => $request->desired_time,
             ]);

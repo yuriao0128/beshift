@@ -2,98 +2,79 @@
 
 @section('content')
 <div class="container mx-auto py-8">
-    <h1 class="text-3xl font-semibold mb-6 text-gray-800">プロフィール編集</h1>
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">プロフィール</h1>
 
     <div class="bg-white shadow rounded-lg p-6">
-        <form method="POST" action="{{ route('users.profile.update') }}">
-            @csrf
-            @method('PUT')
+        <div class="flex items-center mb-6">
+            <!-- プロフィール画像 -->
+            <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('storage/user_images/user.jpg') }}"
+                 alt="{{ $user->name }}" class="w-24 h-24 object-cover rounded-full mr-6">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800">{{ $user->name }}</h2>
+                <p class="text-gray-600">{{ $user->email }}</p>
+            </div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- フリガナ -->
-                <div>
-                    <label for="kana" class="block text-sm font-medium text-gray-700">フリガナ</label>
-                    <input 
-                        type="text" 
-                        name="kana" 
-                        id="kana" 
-                        value="{{ old('kana', $user->kana) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 生年月日 -->
-                <div>
-                    <label for="birth_date" class="block text-sm font-medium text-gray-700">生年月日</label>
-                    <input 
-                        type="date" 
-                        name="birth_date" 
-                        id="birth_date" 
-                        value="{{ old('birth_date', $user->birth_date) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 電話番号 -->
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700">電話番号</label>
-                    <input 
-                        type="text" 
-                        name="phone" 
-                        id="phone" 
-                        value="{{ old('phone', $user->phone) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 最終学歴 -->
-                <div>
-                    <label for="education" class="block text-sm font-medium text-gray-700">最終学歴</label>
-                    <input 
-                        type="text" 
-                        name="education" 
-                        id="education" 
-                        value="{{ old('education', $user->education) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 学校名 -->
-                <div>
-                    <label for="school_name" class="block text-sm font-medium text-gray-700">学校名</label>
-                    <input 
-                        type="text" 
-                        name="school_name" 
-                        id="school_name" 
-                        value="{{ old('school_name', $user->school_name) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 卒業年月 -->
-                <div>
-                    <label for="graduation_date" class="block text-sm font-medium text-gray-700">卒業年月</label>
-                    <input 
-                        type="date" 
-                        name="graduation_date" 
-                        id="graduation_date" 
-                        value="{{ old('graduation_date', $user->graduation_date) }}" 
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <!-- 保有資格 -->
-                <div class="md:col-span-2">
-                    <label for="qualifications" class="block text-sm font-medium text-gray-700">保有資格</label>
-                    <textarea 
-                        name="qualifications" 
-                        id="qualifications" 
-                        rows="4"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('qualifications', $user->qualifications) }}</textarea>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- フリガナ -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">フリガナ</label>
+                <p class="mt-1 text-gray-800">{{ $profile->kana ?? '未登録' }}</p>
             </div>
 
-            <!-- ボタン -->
-            <div class="mt-6 flex justify-end">
-                <button type="submit" class="px-6 p-3 text-center text-m text-white font-semibold leading-none bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg shadow-md opacity-90 hover:opacity-100 hover:shadow-lg transition">
-                    保存
-                </button>
+            <!-- 生年月日 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">生年月日</label>
+                <p class="mt-1 text-gray-800">{{ $profile->birth_date ?? '未登録' }}</p>
             </div>
-        </form>
+
+            <!-- 電話番号 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">電話番号</label>
+                <p class="mt-1 text-gray-800">{{ $profile->phone_number ?? '未登録' }}</p>
+            </div>
+
+            <!-- 最終学歴 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">最終学歴</label>
+                <p class="mt-1 text-gray-800">{{ $profile->education ?? '未登録' }}</p>
+            </div>
+
+            <!-- 学校名 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">学校名</label>
+                <p class="mt-1 text-gray-800">{{ $profile->school_name ?? '未登録' }}</p>
+            </div>
+
+            <!-- 卒業年月 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">卒業年月</label>
+                <p class="mt-1 text-gray-800">{{ $profile->graduation_date ?? '未登録' }}</p>
+            </div>
+
+            <!-- 保有資格 -->
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">保有資格</label>
+                <p class="mt-1 text-gray-800 whitespace-pre-wrap">{{ $profile->qualifications ?? '未登録' }}</p>
+            </div>
+
+            <!-- 自己紹介 -->
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">自己紹介</label>
+                <p class="mt-1 text-gray-800 whitespace-pre-wrap">{{ $profile->introduction ?? '未登録' }}</p>
+            </div>
+        </div>
+
+        <!-- 編集ボタン -->
+        <div class="mt-6 flex justify-end">
+            <a href="{{ route('users.profile.reedit') }}"
+               class="px-6 p-3 text-center text-m text-white font-semibold leading-none
+                           bg-gradient-to-r from-pink-200 to-blue-200 rounded-lg shadow-md opacity-90
+                           hover:opacity-100 hover:shadow-lg transition">
+                編集
+            </a>
+        </div>
     </div>
 </div>
 @endsection
+

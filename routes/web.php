@@ -14,6 +14,9 @@ use App\Http\Controllers\MentorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
+use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\ArticleController;
+
 
 Route::view('/', 'index');
 
@@ -67,15 +70,24 @@ Route::middleware('guest')->group(function () {
 
     //プロフィール編集ページ
     Route::get('/users/profile/edit', [ProfileController::class, 'edit'])->name('users.profile.edit');
-    Route::put('/users/profile', [ProfileController::class, 'update'])->name('users.profile.update');
+    Route::get('/users/profile/reedit', [ProfileController::class, 'reedit'])->name('users.profile.reedit');
+    Route::put('/users/profile', [ProfileController::class, 'update'])->name('users.profile.update');    
 
-//キャリア登録
+    //キャリア登録
 Route::get('/users/career/create', [CareerRecordController::class, 'create'])->name('users.career.create');
 Route::post('/users/career/store', [CareerRecordController::class, 'store'])->name('users.career.store');
+Route::delete('/users/career/{id}', [CareerRecordController::class, 'destroy'])->name('users.career.destroy');
+Route::get('/users/career/{id}/edit', [CareerRecordController::class, 'edit'])->name('users.career.edit');
+Route::put('/users/career/{id}', [CareerRecordController::class, 'update'])->name('users.career.update');
+
 
 //希望条件
 Route::get('/users/desired/create', [DesiredConditionController::class, 'create'])->name('users.desired.create');
 Route::post('/users/desired/store', [DesiredConditionController::class, 'store'])->name('users.desired.store');
+Route::put('/users/desired/{id}/toggle-scout', [DesiredConditionController::class, 'toggleScout'])->name('users.desired.toggleScout');
+Route::get('/users/desired/{id}/edit', [DesiredConditionController::class, 'edit'])->name('users.desired.edit');
+Route::put('/users/desired/{id}', [DesiredConditionController::class, 'update'])->name('users.desired.update');
+Route::delete('/users/desired/{id}', [DesiredConditionController::class, 'destroy'])->name('users.desired.destroy');
 
 //面談予約
 Route::get('/appointment/start', [AppointmentController::class, 'start'])->name('appointment.start');
@@ -91,8 +103,17 @@ Route::post('/admin/mentors', [MentorController::class, 'store'])->name('admin.m
 
 });
 
-
 //ランディングページ
 Route::get('/', function () {
     return view('landing');
 });
+
+// アサインメントページ
+Route::get('/assessment', [AssessmentController::class, 'index'])->name('users.assessment');
+Route::post('/assessment', [AssessmentController::class, 'store'])->name('users.assessment.store');
+Route::get('/mypage', [AssessmentController::class, 'showResults'])->name('users.mypage');
+Route::get('/assessment/{step?}', [AssessmentController::class, 'showQuestion'])->name('assessment');
+Route::post('/assessment/{step}', [AssessmentController::class, 'storeAnswer'])->name('assessment.store');
+
+//記事
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');

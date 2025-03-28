@@ -102,15 +102,35 @@
             <div class="flex justify-between items-center h-16">
                 <span class="text-lg font-bold text-indigo-600"></span>
                 <div class="flex items-center">
-                    <span class="text-gray-600 text-sm mr-4">
+
+
+<a href="{{ route('assessment', ['step' => 1]) }}" 
+   class="flex items-center space-x-2 px-3 py-1 text-sm rounded-full shadow-md 
+          bg-gradient-to-r from-pink-50 to-blue-50 hover:from-pink-100 hover:to-blue-100 transition duration-300 ml-8">
+    <svg class="w-4 h-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M12 4v16m8-8H4" />
+    </svg>
+    <span class="text-gray-800 font-medium">
+        @if(Session::has('assessment_answers'))
+            キャリア診断を更新
+        @else
+            キャリア診断を開始
+        @endif
+    </span>
+</a>
+
+
+
+                    <span class="text-gray-600 text-sm ml-4">
                         {{ Auth::user()->name }} さん
                     </span>
                     @if (Auth::user()->image)
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" class="w-10 h-10 rounded-full object-cover" alt="{{ Auth::user()->name }}">
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}"
+                            class="w-10 h-10 rounded-full object-cover" alt="{{ Auth::user()->name }}">
                     @else
-                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-                            <span class="text-gray-500">N/A</span>
-                        </div>
+                        <img src="{{ asset('storage/user_images/user.jpg') }}"
+                            class="w-10 h-10 rounded-full object-cover" alt="{{ Auth::user()->name }}">
                     @endif
                 </div>
             </div>
