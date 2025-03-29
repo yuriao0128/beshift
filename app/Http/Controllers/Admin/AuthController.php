@@ -15,7 +15,7 @@ class AuthController extends Controller
             // ロールを見てリダイレクト先を変える
             $user = Auth::user();
             if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('users.mypage');
             } else {
                 return redirect()->route('users.mypage');
             }
@@ -24,7 +24,7 @@ class AuthController extends Controller
         $role = $request->query('role', 'user');
 
         if ($role === 'admin') {
-            return view('admin.login');
+            return view('users.login');
         } else {
             return view('users.login');
         }
@@ -47,7 +47,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.login')->withErrors(['email' => '管理者ではありません']);
             }
     
-            return redirect()->route('admin.dashboard')->with('success', '管理者としてログインしました');
+            return redirect()->route('users.mypage')->with('success', 'ログインしました');
         }
     
         return back()->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません']);
