@@ -5,9 +5,10 @@
     <h1 class="text-3xl font-bold mb-6 text-gray-800">プロフィール編集</h1>
 
     <div class="bg-white shadow rounded-lg p-6">
-        <form action="{{ route('users.profile.update') }}" method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('users.profile.update') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
             
             <!-- プロフィール画像のアップロード -->
             <div class="mb-6">
