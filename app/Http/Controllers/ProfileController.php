@@ -62,7 +62,7 @@ class ProfileController extends Controller
             }
     
             // 画像を保存し、パスを取得（'user_images' フォルダに保存）
-            $path = $file->store('user_images', 'public');
+            $path = $file->store('users', 'public');
     
             // User モデルの image フィールドを更新
             $user->image = $path;
