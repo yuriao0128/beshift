@@ -32,7 +32,7 @@ class UserAuthController extends Controller
             if ($userRole === 'user') {
                 return redirect()->route('users.mypage')->with('success', 'ログインしました');
             } elseif ($userRole === 'admin') {
-                return redirect()->route('admin.dashboard')->with('success', '管理者としてログインしました');
+                return redirect()->route('users.mypage')->with('success', 'ログインしました');
             } else {
                 // 不明なロールの場合の処理
                 Auth::logout();
