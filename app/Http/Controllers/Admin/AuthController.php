@@ -11,8 +11,18 @@ class AuthController extends Controller
     // ログインフォーム表示
     public function showLoginForm(Request $request)
     {
-        $role = $request->query('role', 'user'); // クエリパラメータからロールを取得（デフォルトは'user'）
-        
+        if (Auth::check()) {
+            // ロールを見てリダイレクト先を変える
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('users.mypage');
+            }
+        }
+    
+        $role = $request->query('role', 'user');
+
         if ($role === 'admin') {
             return view('admin.login');
         } else {
@@ -42,7 +52,6 @@ class AuthController extends Controller
     
         return back()->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません']);
     }
-
 
     // ログアウト処理
     public function logout(Request $request)
