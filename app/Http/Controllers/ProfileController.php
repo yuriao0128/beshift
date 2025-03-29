@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
-use App\Models\Position;
 
 
 class ProfileController extends Controller
@@ -19,9 +18,8 @@ class ProfileController extends Controller
         // 既存のプロフィール表示画面用の処理（閲覧用）
         $user = Auth::user();
         $profile = Profile::firstOrCreate(['user_id' => $user->id]);
-        $positions = Position::all();
     
-        return view('users.profile.edit', compact('user', 'profile', 'positions'));
+        return view('users.profile.edit', compact('user', 'profile'));
     }
     
     public function reedit()
@@ -29,9 +27,8 @@ class ProfileController extends Controller
         // 編集ボタンを押したときに遷移する編集用のページ
         $user = Auth::user();
         $profile = Profile::firstOrCreate(['user_id' => $user->id]);
-        $positions = Position::all();
     
-        return view('users.profile.reedit', compact('user', 'profile', 'positions'));
+        return view('users.profile.reedit', compact('user', 'profile'));
     }
     /**
      * プロフィールの更新
