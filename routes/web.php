@@ -20,36 +20,36 @@ use App\Http\Controllers\ArticleController;
 
 Route::view('/', 'index');
 
-// 管理者用ルート
-Route::prefix('/admin')->name('admin.')->group(function () {
-    Route::middleware('guest')->group(function () {
-        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-        Route::post('/login', [AuthController::class, 'adminLogin'])->name('login.submit');
-    });
+// // 管理者用ルート
+// Route::prefix('/admin')->name('admin.')->group(function () {
+//     Route::middleware('guest')->group(function () {
+//         Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+//         Route::post('/login', [AuthController::class, 'adminLogin'])->name('login.submit');
+//     });
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-        Route::post('/users', [UserController::class, 'store'])->name('users.store');
-        Route::get('/users-list', [UserController::class, 'index'])->name('users-list');
-        Route::get('/appointments/calendar', [AppointmentController::class, 'adminCalendar'])->name('appointments.calendar');
+//     Route::middleware('auth')->group(function () {
+//         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+//         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+//         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+//         Route::post('/users', [UserController::class, 'store'])->name('users.store');
+//         Route::get('/users-list', [UserController::class, 'index'])->name('users-list');
+//         Route::get('/appointments/calendar', [AppointmentController::class, 'adminCalendar'])->name('appointments.calendar');
         
-        //予約一覧
-        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
-        Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
-        Route::get('/appointments/{id}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
-        Route::put('/appointments/{id}', [AppointmentController::class, 'update'])->name('appointments.update');
-        Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('appointments.delete');
-    });
+//         //予約一覧
+//         Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+//         Route::get('/appointments/{id}', [AppointmentController::class, 'show'])->name('appointments.show');
+//         Route::get('/appointments/{id}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
+//         Route::put('/appointments/{id}', [AppointmentController::class, 'update'])->name('appointments.update');
+//         Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('appointments.delete');
+//     });
 
 
-        //管理者一覧
-        Route::get('/admin-list', [AdminController::class, 'listAdmins'])->name('admin.list');
-        Route::delete('/admin-list/{id}', [AdminController::class, 'destroyAdmin'])->name('destroy'); // 管理者削除
-        Route::get('/admin-list/{id}/edit', [AdminController::class, 'editAdmin'])->name('edit'); // 管理者編集
-        Route::put('/admin-list/{id}', [AdminController::class, 'updateAdmin'])->name('update'); // 管理者更新        
-    });
+//         //管理者一覧
+//         Route::get('/admin-list', [AdminController::class, 'listAdmins'])->name('admin.list');
+//         Route::delete('/admin-list/{id}', [AdminController::class, 'destroyAdmin'])->name('destroy'); // 管理者削除
+//         Route::get('/admin-list/{id}/edit', [AdminController::class, 'editAdmin'])->name('edit'); // 管理者編集
+//         Route::put('/admin-list/{id}', [AdminController::class, 'updateAdmin'])->name('update'); // 管理者更新        
+//     });
 
 
 // ユーザー用ルート
