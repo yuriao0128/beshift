@@ -7,6 +7,7 @@
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex items-center mb-6">
             <!-- プロフィール画像 -->
+            <p>画像パス: {{ $user->image }}</p>
             <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('storage/user_images/user.jpg') }}"
                  alt="{{ $user->name }}" class="w-24 h-24 object-cover rounded-full mr-6">
             <div>

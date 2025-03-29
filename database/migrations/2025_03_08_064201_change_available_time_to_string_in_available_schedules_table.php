@@ -12,15 +12,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('available_schedules', function (Blueprint $table) {
-            // available_time カラムの型を string に変更
+            // `TIME` から `VARCHAR` への変更
             $table->string('available_time')->change();
         });
     }
-
+    
     public function down()
     {
         Schema::table('available_schedules', function (Blueprint $table) {
-            // もとの TIME 型に戻す（適切な長さで）
+            // もし元に戻す場合は `TIME` に変更
             $table->time('available_time')->change();
         });
     }

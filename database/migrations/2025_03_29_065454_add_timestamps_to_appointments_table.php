@@ -6,17 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    /**
+     * Run the migrations.
+     */
+    public function up()
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->string('desired_time', 20)->change(); // VARCHAR(20) に変更
+            $table->time('desired_start_time');  // 開始時間
+            $table->time('desired_end_time');    // 終了時間
         });
     }
-
-    public function down(): void
+    
+    public function down()
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->time('desired_time')->change(); // 元に戻す
+            $table->dropColumn(['desired_start_time', 'desired_end_time']);
         });
     }
+    
 };
