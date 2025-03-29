@@ -18,7 +18,7 @@
             <div class="mentor-option flex flex-col p-4 border rounded-md shadow-sm hover:bg-indigo-100 cursor-pointer"
                  data-id="{{ $mentor->id }}">
               @if ($mentor->image)
-              <img src="https://beshift.sakura.ne.jp/mentor_images/{{ $mentor->image }}" alt="{{ $mentor->name }}" class="w-12 h-12 object-cover rounded-full mr-4">
+              <img src="https://beshift.sakura.ne.jp/{{ $mentor->image }}" alt="{{ $mentor->name }}" class="w-12 h-12 object-cover rounded-full mr-4">
               @endif
               <div>
                 <p class="text-sm font-medium text-gray-800">{{ $mentor->name }}</p>
