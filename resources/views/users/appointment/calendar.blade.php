@@ -30,6 +30,9 @@
                 詳細をみる
               </button>
             </div>
+            <div class="text-red-500 text-sm">
+                {{ $mentor->image }}
+            </div>
           @endforeach
         </div>
       </div>
