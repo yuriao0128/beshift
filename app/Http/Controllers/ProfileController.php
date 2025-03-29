@@ -53,6 +53,7 @@ class ProfileController extends Controller
         // 現在のユーザー
         $user = Auth::user();
 
+        dd($request->file('image'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
     
@@ -63,8 +64,6 @@ class ProfileController extends Controller
     
             // 画像を保存し、パスを取得（'user_images' フォルダに保存）
             $path = $file->store('users', 'public');
-
-            dd($path); //
     
             // User モデルの image フィールドを更新
             $user->image = $path;
