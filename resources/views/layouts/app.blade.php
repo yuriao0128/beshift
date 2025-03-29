@@ -125,15 +125,9 @@
                     <span class="text-gray-600 text-sm ml-4">
                         {{ Auth::user()->name }} さん
                     </span>
-                    @if (Auth::user()->image)
-                    <img src="{{ asset('storage/' . Auth::user()->image) }}"
-                        class="w-10 h-10 rounded-full object-cover"
-                        alt="{{ Auth::user()->name }}">
-                @else
                     <img src="https://beshift.sakura.ne.jp/mentor_images/default1.jpg"
-                        class="w-10 h-10 rounded-full object-cover"
-                        alt="{{ Auth::user()->name }}">
-                @endif
+                    class="w-10 h-10 rounded-full object-cover"
+                    alt="{{ Auth::user()->name }}">
                 </div>
             </div>
         </div>

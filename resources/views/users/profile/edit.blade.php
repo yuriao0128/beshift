@@ -7,7 +7,7 @@
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex items-center mb-6">
             <!-- プロフィール画像 -->
-            <img src="{{ $user->image ? asset('storage/' . $user->image) : 'https://beshift.sakura.ne.jp/mentor_images/default1.jpg' }}"
+            <img src="https://beshift.sakura.ne.jp/mentor_images/default1.jpg"
      alt="{{ $user->name }}" class="w-24 h-24 object-cover rounded-full mr-6">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800">{{ $user->name }}</h2>
