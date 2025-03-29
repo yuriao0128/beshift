@@ -11,6 +11,10 @@ class UserAuthController extends Controller
     // ログインフォーム表示
     public function showLoginForm()
     {
+        if (Auth::check()) {
+            return redirect()->route('users.mypage');
+        }
+    
         return view('users.login');
     }
 
