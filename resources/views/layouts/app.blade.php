@@ -126,7 +126,7 @@
                         {{ Auth::user()->name }} さん
                     </span>
                     @if (Auth::user()->image)
-                    <img src="{{ asset('storage/users/' . Auth::user()->image) }}"
+                    <img src="{{ asset('storage/' . Auth::user()->image) }}"
                         class="w-10 h-10 rounded-full object-cover"
                         alt="{{ Auth::user()->name }}">
                 @else
