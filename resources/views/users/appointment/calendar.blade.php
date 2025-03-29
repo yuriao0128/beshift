@@ -18,7 +18,7 @@
             <div class="mentor-option flex flex-col p-4 border rounded-md shadow-sm hover:bg-indigo-100 cursor-pointer"
                  data-id="{{ $mentor->id }}">
               @if ($mentor->image)
-                <img src="{{ asset('storage/' . $mentor->image) }}" alt="{{ $mentor->name }}" class="w-12 h-12 object-cover rounded-full mr-4">
+                <img src="{{ asset('mentor_images' . $mentor->image) }}" alt="{{ $mentor->name }}" class="w-12 h-12 object-cover rounded-full mr-4">
               @endif
               <div>
                 <p class="text-sm font-medium text-gray-800">{{ $mentor->name }}</p>
@@ -185,7 +185,7 @@
             document.getElementById('modalMentorBio').textContent = mentorData.bio;
             if (mentorData.image) {
                 var img = document.getElementById('modalMentorImage');
-                img.src = '/storage/' + mentorData.image;
+                img.src = '/mentor_images/' + mentorData.image;
                 img.style.display = 'block';
             } else {
                 document.getElementById('modalMentorImage').style.display = 'none';
