@@ -13,10 +13,10 @@
             <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-700 mb-2">プロフィール画像</label>
                 <div class="relative w-32 h-32">
-                    <img id="profilePreview"
-                        src="{{ $user->image ? asset('storage/' . $user->image) : 'https://beshift.sakura.ne.jp/mentor_images/default1.jpg' }}"
-                        alt="{{ $user->name }}"
-                        class="w-32 h-32 object-cover rounded-full">
+                <img id="profilePreview"
+                src="{{ $user->image ? asset('storage/users/' . $user->image) : 'https://beshift.sakura.ne.jp/mentor_images/default1.jpg' }}"
+                alt="{{ $user->name }}"
+                class="w-32 h-32 object-cover rounded-full">
                     <!-- オーバーレイ（hover で表示） -->
                     <label for="image"
                            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity rounded-full cursor-pointer">
